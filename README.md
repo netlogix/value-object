@@ -1,0 +1,1 @@
+# netlogix/value-object
