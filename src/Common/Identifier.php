@@ -1,0 +1,72 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Netlogix\ValueObject\Common;
+
+use Doctrine\DBAL\ParameterType;
+use Stringable;
+use Symfony\Component\Uid\Uuid;
+
+abstract readonly class Identifier implements PersistableValueObject, Stringable
+{
+    public function __construct(
+        protected string $identifier
+    ) {
+    }
+
+    public static function createNew(): static
+    {
+        return static::fromString(Uuid::v4()->toRfc4122());
+    }
+
+    public static function createEmpty(): static
+    {
+        return static::fromString('');
+    }
+
+    public static function fromUuid(Uuid $uuid): static
+    {
+        return static::fromString($uuid->toString());
+    }
+
+    public static function fromString(string $identifier): static
+    {
+        return new static($identifier);
+    }
+
+    public function toString(): string
+    {
+        return $this->identifier;
+    }
+
+    public function __toString(): string
+    {
+        return $this->identifier;
+    }
+
+    public function jsonSerialize(): string
+    {
+        return $this->identifier;
+    }
+
+    public function equals(self $other): bool
+    {
+        return $this->identifier === $other->identifier;
+    }
+
+    public function rawValue(): string
+    {
+        return $this->identifier;
+    }
+
+    public static function fromRawValue(mixed $value): static
+    {
+        return static::fromString($value);
+    }
+
+    public function rawType(): ParameterType
+    {
+        return ParameterType::STRING;
+    }
+}
