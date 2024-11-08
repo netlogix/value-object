@@ -6,13 +6,15 @@
         "php": "^8.3",
         "doctrine/dbal": "^4.0",
         "doctrine/orm": "^3.2",
-        "symfony/dependency-injection": "^7.1",
-        "symfony/framework-bundle": "^7.1",
         "symfony/uid": "^7.1"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.42",
         "rector/rector": "^1.2"
+    },
+    "suggest": {
+        "symfony/dependency-injection": "^7.1",
+        "symfony/framework-bundle": "^7.1"
     },
     "autoload": {
         "psr-4": {
