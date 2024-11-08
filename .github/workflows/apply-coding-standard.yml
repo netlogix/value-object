@@ -42,17 +42,14 @@ jobs:
       - name: 'Rector PHP Code'
         shell: bash
         run: composer rector:fix
-        working-directory: 'website'
 
       - name: 'Normalize Composer files'
         shell: bash
         run: composer composer:normalize:fix
-        working-directory: 'website'
 
       - name: 'PHP syntax checker'
         shell: bash
         run: composer php:lint
-        working-directory: 'website'
 
       - name: 'Prettier'
         shell: bash
