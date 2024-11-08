@@ -14,7 +14,9 @@ use Stringable;
 abstract readonly class DateTime implements PersistableValueObject, Stringable
 {
     final public const string DEFAULT_DATE_TIME_FORMAT = 'Y-m-d\TH:i:s\Z';
+
     private const string EMPTY = '';
+
     protected string $date;
 
     public function __construct(?string $_date)
@@ -22,6 +24,7 @@ abstract readonly class DateTime implements PersistableValueObject, Stringable
         if ($_date === null) {
             $_date = (new \DateTime())->format(DateTime::DEFAULT_DATE_TIME_FORMAT);
         }
+
         $this->date = $_date;
     }
 
@@ -60,6 +63,7 @@ abstract readonly class DateTime implements PersistableValueObject, Stringable
         return $this->date;
     }
 
+    #[\Override]
     public function __toString(): string
     {
         return $this->date;
@@ -76,6 +80,7 @@ abstract readonly class DateTime implements PersistableValueObject, Stringable
             ->format($format);
     }
 
+    #[\Override]
     public function jsonSerialize(): string
     {
         return $this->date;
@@ -100,16 +105,19 @@ abstract readonly class DateTime implements PersistableValueObject, Stringable
             );
     }
 
+    #[\Override]
     public function rawValue(): string
     {
         return $this->date;
     }
 
+    #[\Override]
     public static function fromRawValue(mixed $value): static
     {
         return static::fromDateTime($value);
     }
 
+    #[\Override]
     public function rawType(): ParameterType
     {
         return ParameterType::STRING;

@@ -9,9 +9,8 @@ use Stringable;
 
 abstract readonly class IntegerValue implements PersistableValueObject, Stringable
 {
-    public function __construct(
-        protected int $value
-    ) {
+    public function __construct(protected int $value)
+    {
     }
 
     public static function fromInteger(int $value): static
@@ -24,11 +23,13 @@ abstract readonly class IntegerValue implements PersistableValueObject, Stringab
         return $this->value;
     }
 
+    #[\Override]
     public function __toString(): string
     {
-        return (string)$this->value;
+        return (string) $this->value;
     }
 
+    #[\Override]
     public function jsonSerialize(): int
     {
         return $this->value;
@@ -84,16 +85,19 @@ abstract readonly class IntegerValue implements PersistableValueObject, Stringab
         return $this->value < 0;
     }
 
+    #[\Override]
     public function rawValue(): int
     {
         return $this->value;
     }
 
+    #[\Override]
     public static function fromRawValue(mixed $value): static
     {
         return static::fromInteger($value);
     }
 
+    #[\Override]
     public function rawType(): ParameterType
     {
         return ParameterType::INTEGER;

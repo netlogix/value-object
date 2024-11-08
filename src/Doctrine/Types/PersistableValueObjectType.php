@@ -25,8 +25,11 @@ final class PersistableValueObjectType extends Type
         IntegerValue::class => Types::INTEGER,
         StringValue::class => Types::STRING,
     ];
+
     private string $typeName;
+
     private string $valueObjectFQCN;
+
     private string $builtInTypeName;
 
     public static function create(string $typeName, string $valueObjectFQCN): self
@@ -75,11 +78,13 @@ final class PersistableValueObjectType extends Type
         return true;
     }
 
+    #[\Override]
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $this->getBuiltInType()->getSQLDeclaration($column, $platform);
     }
 
+    #[\Override]
     public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): mixed
     {
         if ($value === null) {
@@ -99,6 +104,7 @@ final class PersistableValueObjectType extends Type
         return $this->getBuiltInType()->convertToDatabaseValue($value->rawValue(), $platform);
     }
 
+    #[\Override]
     public function convertToPHPValue(mixed $value, AbstractPlatform $platform): mixed
     {
         $value = $this->getBuiltInType()->convertToPHPValue($value, $platform);

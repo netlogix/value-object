@@ -16,6 +16,7 @@ class PersistableValueObjectPass implements CompilerPassInterface
 {
     public const string VALUE_OBJECT_TAG = 'value_object.persistable_value_object';
 
+    #[\Override]
     public function process(ContainerBuilder $container): void
     {
         $types = [];
@@ -24,6 +25,7 @@ class PersistableValueObjectPass implements CompilerPassInterface
             if (!$definition->hasTag(self::VALUE_OBJECT_TAG)) {
                 continue;
             }
+
             $class = $definition->getClass();
             $types[$class] = $class;
         }

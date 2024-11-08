@@ -9,21 +9,8 @@ use Symfony\Component\Uid\Uuid;
 
 class ValueObjectBasedUuidFactory
 {
-    public static function createUuidFromValueObject(
-        string $suffix,
-        ValueObject ...$valueObjects
-    ): Uuid {
-        return Uuid::fromBinary(
-            hex2bin(
-                md5(
-                    json_encode(
-                        array_merge(
-                            $valueObjects,
-                            [$suffix]
-                        )
-                    )
-                )
-            )
-        );
+    public static function createUuidFromValueObject(string $suffix, ValueObject ...$valueObjects): Uuid
+    {
+        return Uuid::fromBinary(hex2bin(md5(json_encode(array_merge($valueObjects, [$suffix])))));
     }
 }

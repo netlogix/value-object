@@ -11,6 +11,7 @@ use ReflectionProperty;
 
 final readonly class PersistableValueObjectTypedFieldMapper implements TypedFieldMapper
 {
+    #[\Override]
     public function validateAndComplete(array $mapping, ReflectionProperty $field): array
     {
         $type = $field->getType();

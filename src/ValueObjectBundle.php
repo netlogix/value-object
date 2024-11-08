@@ -13,20 +13,18 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class ValueObjectBundle extends AbstractBundle
 {
+    #[\Override]
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $services = $container->services();
-        $services->defaults()
-            ->autoconfigure()
-            ->autowire();
+        $services->defaults()->autoconfigure()->autowire();
 
         $services->load('Netlogix\\ValueObject\\', '../src');
     }
 
-    public function prependExtension(
-        ContainerConfigurator $container,
-        ContainerBuilder $builder
-    ): void {
+    #[\Override]
+    public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
+    {
         $builder->prependExtensionConfig('doctrine', [
             'orm' => [
                 'typed_field_mapper' => 'doctrine.orm.typed_field_mapper.chain',
@@ -34,12 +32,14 @@ class ValueObjectBundle extends AbstractBundle
         ]);
     }
 
+    #[\Override]
     public function build(ContainerBuilder $container): void
     {
         // Register compiler pass to collect value object types
         $container->addCompilerPass(new PersistableValueObjectPass());
     }
 
+    #[\Override]
     public function boot(): void
     {
         // Register custom Doctrine types for value objects

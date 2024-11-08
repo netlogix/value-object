@@ -10,9 +10,8 @@ use Symfony\Component\Uid\Uuid;
 
 abstract readonly class Identifier implements PersistableValueObject, Stringable
 {
-    public function __construct(
-        protected string $identifier
-    ) {
+    public function __construct(protected string $identifier)
+    {
     }
 
     public static function createNew(): static
@@ -40,11 +39,13 @@ abstract readonly class Identifier implements PersistableValueObject, Stringable
         return $this->identifier;
     }
 
+    #[\Override]
     public function __toString(): string
     {
         return $this->identifier;
     }
 
+    #[\Override]
     public function jsonSerialize(): string
     {
         return $this->identifier;
@@ -55,16 +56,19 @@ abstract readonly class Identifier implements PersistableValueObject, Stringable
         return $this->identifier === $other->identifier;
     }
 
+    #[\Override]
     public function rawValue(): string
     {
         return $this->identifier;
     }
 
+    #[\Override]
     public static function fromRawValue(mixed $value): static
     {
         return static::fromString($value);
     }
 
+    #[\Override]
     public function rawType(): ParameterType
     {
         return ParameterType::STRING;

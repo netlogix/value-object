@@ -9,9 +9,8 @@ use Stringable;
 
 abstract readonly class BooleanValue implements PersistableValueObject, Stringable
 {
-    public function __construct(
-        protected bool $value
-    ) {
+    public function __construct(protected bool $value)
+    {
     }
 
     public static function fromBoolean(bool $value): static
@@ -24,11 +23,13 @@ abstract readonly class BooleanValue implements PersistableValueObject, Stringab
         return $this->value;
     }
 
+    #[\Override]
     public function __toString(): string
     {
-        return (string)$this->value;
+        return (string) $this->value;
     }
 
+    #[\Override]
     public function jsonSerialize(): bool
     {
         return $this->value;
@@ -39,16 +40,19 @@ abstract readonly class BooleanValue implements PersistableValueObject, Stringab
         return $this->value === $other->value;
     }
 
+    #[\Override]
     public function rawValue(): bool
     {
         return $this->value;
     }
 
+    #[\Override]
     public static function fromRawValue(mixed $value): static
     {
         return static::fromBoolean($value);
     }
 
+    #[\Override]
     public function rawType(): ParameterType
     {
         return ParameterType::BOOLEAN;
