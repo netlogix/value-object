@@ -10,7 +10,7 @@ return RectorConfig::configure()
     ->withPaths([__DIR__ . '/src/'])
     ->withPhpSets(true)
     ->withSets([
-        LevelSetList::UP_TO_PHP_82,
+        LevelSetList::UP_TO_PHP_83,
         SetList::CODE_QUALITY,
         SetList::CODING_STYLE,
         SetList::DEAD_CODE,
