@@ -1,0 +1,35 @@
+{
+    "name": "netlogix/value-object",
+    "description": "A collection of common value objects with Doctrine integration",
+    "type": "symfony-bundle",
+    "require": {
+        "php": "^8.3",
+        "doctrine/dbal": "^4.0",
+        "doctrine/orm": "^3.2",
+        "symfony/dependency-injection": "^7.1",
+        "symfony/framework-bundle": "^7.1",
+        "symfony/uid": "^7.1"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.42",
+        "rector/rector": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Netlogix\\ValueObject\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        }
+    },
+    "scripts": {
+        "composer:normalize": "@composer normalize --no-check-lock --dry-run",
+        "composer:normalize:fix": "@composer normalize --no-check-lock",
+        "composer:psr-verify": "@composer dumpautoload --optimize --strict-psr --no-plugins",
+        "php:lint": "find src -name '*.php' -print0 | xargs -r -0 -n 1 -P 4 php -l",
+        "rector": "rector process --dry-run",
+        "rector:fix": "rector process"
+    }
+}
