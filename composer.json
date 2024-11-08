@@ -1,8 +1,8 @@
 {
     "name": "netlogix/value-object",
     "description": "A collection of common value objects with Doctrine integration",
-    "type": "symfony-bundle",
     "license": "MIT",
+    "type": "symfony-bundle",
     "require": {
         "php": "^8.3",
         "doctrine/dbal": "^4.0",
