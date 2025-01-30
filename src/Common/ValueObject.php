@@ -6,6 +6,4 @@ namespace Netlogix\ValueObject\Common;
 
 use JsonSerializable;
 
-interface ValueObject extends JsonSerializable
-{
-}
+interface ValueObject extends JsonSerializable {}

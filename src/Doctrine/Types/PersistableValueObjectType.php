@@ -37,10 +37,10 @@ final class PersistableValueObjectType extends Type
         if (!is_subclass_of($valueObjectFQCN, PersistableValueObject::class)) {
             throw new LogicException(
                 sprintf(
-                    "Value object %s must implement %s interface",
+                    'Value object %s must implement %s interface',
                     $valueObjectFQCN,
-                    PersistableValueObject::class
-                )
+                    PersistableValueObject::class,
+                ),
             );
         }
 
@@ -56,10 +56,7 @@ final class PersistableValueObjectType extends Type
         }
 
         throw new LogicException(
-            sprintf(
-                'No built-in Doctrine DBAL type found for value object %s',
-                $valueObjectFQCN,
-            )
+            sprintf('No built-in Doctrine DBAL type found for value object %s', $valueObjectFQCN),
         );
     }
 
@@ -96,8 +93,8 @@ final class PersistableValueObjectType extends Type
                 sprintf(
                     'Value object of type %s expected, got %s',
                     $this->valueObjectFQCN,
-                    get_debug_type($value)
-                )
+                    get_debug_type($value),
+                ),
             );
         }
 
@@ -118,11 +115,11 @@ final class PersistableValueObjectType extends Type
         if (!$valueObject instanceof $this->valueObjectFQCN) {
             throw new LogicException(
                 sprintf(
-                    "%s::fromRawValue must return an instance of %s, returned %s",
+                    '%s::fromRawValue must return an instance of %s, returned %s',
                     $this->valueObjectFQCN,
                     $this->valueObjectFQCN,
-                    get_debug_type($valueObject)
-                )
+                    get_debug_type($valueObject),
+                ),
             );
         }
 

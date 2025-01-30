@@ -9,9 +9,7 @@ use Stringable;
 
 abstract readonly class IntegerValue implements PersistableValueObject, Stringable
 {
-    public function __construct(protected int $value)
-    {
-    }
+    public function __construct(protected int $value) {}
 
     public static function fromInteger(int $value): static
     {

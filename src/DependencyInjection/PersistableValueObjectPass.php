@@ -30,9 +30,7 @@ class PersistableValueObjectPass implements CompilerPassInterface
             $types[$class] = $class;
         }
 
-        $container
-            ->getDefinition(PersistableValueObjectTypes::class)
-            ->setArgument('$types', $types);
+        $container->getDefinition(PersistableValueObjectTypes::class)->setArgument('$types', $types);
 
         $chainTypedFieldMapper = new Definition(ChainTypedFieldMapper::class);
         $chainTypedFieldMapper->setArgument('$typedFieldMappers', [

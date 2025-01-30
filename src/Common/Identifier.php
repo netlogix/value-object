@@ -10,9 +10,7 @@ use Symfony\Component\Uid\Uuid;
 
 abstract readonly class Identifier implements PersistableValueObject, Stringable
 {
-    public function __construct(protected string $identifier)
-    {
-    }
+    public function __construct(protected string $identifier) {}
 
     public static function createNew(): static
     {

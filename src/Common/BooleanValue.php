@@ -9,9 +9,7 @@ use Stringable;
 
 abstract readonly class BooleanValue implements PersistableValueObject, Stringable
 {
-    public function __construct(protected bool $value)
-    {
-    }
+    public function __construct(protected bool $value) {}
 
     public static function fromBoolean(bool $value): static
     {
