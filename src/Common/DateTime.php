@@ -43,9 +43,10 @@ abstract readonly class DateTime implements PersistableValueObject, Stringable
 
     public static function fromDateTime(?DateTimeInterface $date): static
     {
-        return $date instanceof DateTimeInterface
-            ? self::fromString($date->format(DateTime::DEFAULT_DATE_TIME_FORMAT))
-            : self::createEmpty();
+        if ($date instanceof DateTimeInterface) {
+            return self::fromString($date->setTimezone(new DateTimeZone('UTC'))->format(DateTime::DEFAULT_DATE_TIME_FORMAT));
+        }
+        return self::createEmpty();
     }
 
     public static function createEmpty(): static
