@@ -9,9 +9,7 @@ use Stringable;
 
 abstract readonly class StringValue implements PersistableValueObject, Stringable
 {
-    public function __construct(protected string $value)
-    {
-    }
+    public function __construct(protected string $value) {}
 
     public static function fromString(string $name): static
     {

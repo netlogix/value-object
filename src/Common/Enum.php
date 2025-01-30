@@ -6,6 +6,4 @@ namespace Netlogix\ValueObject\Common;
 
 use BackedEnum;
 
-interface Enum extends ValueObject, BackedEnum
-{
-}
+interface Enum extends ValueObject, BackedEnum {}

@@ -44,8 +44,11 @@ abstract readonly class DateTime implements PersistableValueObject, Stringable
     public static function fromDateTime(?DateTimeInterface $date): static
     {
         if ($date instanceof DateTimeInterface) {
-            return self::fromString($date->setTimezone(new DateTimeZone('UTC'))->format(DateTime::DEFAULT_DATE_TIME_FORMAT));
+            return self::fromString(
+                $date->setTimezone(new DateTimeZone('UTC'))->format(DateTime::DEFAULT_DATE_TIME_FORMAT),
+            );
         }
+
         return self::createEmpty();
     }
 
@@ -77,8 +80,7 @@ abstract readonly class DateTime implements PersistableValueObject, Stringable
 
     public function format(string $format): string
     {
-        return $this->toDateTime()
-            ->format($format);
+        return $this->toDateTime()->format($format);
     }
 
     #[\Override]
@@ -99,11 +101,7 @@ abstract readonly class DateTime implements PersistableValueObject, Stringable
 
     public function equals(?self $other): bool
     {
-        return $this->toString() === (
-            $other instanceof DateTime
-                ? $other->toString()
-                : self::EMPTY
-            );
+        return $this->toString() === ($other instanceof DateTime ? $other->toString() : self::EMPTY);
     }
 
     #[\Override]
