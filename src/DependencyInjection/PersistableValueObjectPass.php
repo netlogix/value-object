@@ -22,9 +22,8 @@ class PersistableValueObjectPass implements CompilerPassInterface
         $types = [];
 
         foreach (
-            array_keys(
-                $container->findTaggedResourceIds(PersistableValueObjectPass::VALUE_OBJECT_TAG)
-            ) as $class
+            array_keys($container->findTaggedResourceIds(PersistableValueObjectPass::VALUE_OBJECT_TAG))
+            as $class
         ) {
             $types[$class] = $class;
         }
