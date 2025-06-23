@@ -11,7 +11,7 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.42",
-        "rector/rector": "^1.2"
+        "rector/rector": "^2.0"
     },
     "suggest": {
         "symfony/dependency-injection": "^7.3",
