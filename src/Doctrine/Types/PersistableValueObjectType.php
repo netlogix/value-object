@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\Types;
 use InvalidArgumentException;
 use LogicException;
+use Netlogix\ValueObject\Common\FloatValue;
 use Netlogix\ValueObject\Common\Identifier;
 use Netlogix\ValueObject\Common\BooleanValue;
 use Netlogix\ValueObject\Common\DateTime;
@@ -21,6 +22,7 @@ final class PersistableValueObjectType extends Type
     private const array BUILT_IN_TYPE_MAP = [
         BooleanValue::class => Types::BOOLEAN,
         DateTime::class => Types::DATETIMETZ_IMMUTABLE,
+        FloatValue::class => Types::FLOAT,
         Identifier::class => Types::STRING,
         IntegerValue::class => Types::INTEGER,
         StringValue::class => Types::STRING,
