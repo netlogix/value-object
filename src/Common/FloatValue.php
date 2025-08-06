@@ -52,7 +52,7 @@ abstract readonly class FloatValue implements PersistableValueObject, Stringable
     #[\Override]
     public static function fromRawValue(mixed $value): static
     {
-        return static::fromInteger($value);
+        return static::fromFloat($value);
     }
 
     #[\Override]
