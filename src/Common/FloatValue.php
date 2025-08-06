@@ -11,6 +11,11 @@ abstract readonly class FloatValue implements PersistableValueObject, Stringable
 {
     public function __construct(protected float $value) {}
 
+    public static function fromFloat(float $value): static
+    {
+        return new static($value);
+    }
+
     public static function fromInteger(int $value): static
     {
         return new static(floatval($value));
