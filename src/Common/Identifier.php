@@ -71,4 +71,28 @@ abstract readonly class Identifier implements PersistableValueObject, Stringable
     {
         return ParameterType::STRING;
     }
+
+    public static function fromValueObjects(PersistableValueObject ...$valueObjects): static
+    {
+        return new static(
+            Uuid::fromBinary(
+                hex2bin(
+                    md5(
+                        json_encode(
+                            strtolower(
+                                implode(
+                                    '-',
+                                    array_map(
+                                        static fn(PersistableValueObject $valueObject) => $valueObject->rawValue(),
+                                        $valueObjects
+                                    )
+                                )
+                            ),
+                            JSON_THROW_ON_ERROR
+                        )
+                    )
+                )
+            )->toString()
+        );
+    }
 }
