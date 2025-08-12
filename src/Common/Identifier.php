@@ -83,16 +83,18 @@ abstract readonly class Identifier implements PersistableValueObject, Stringable
                                 implode(
                                     '-',
                                     array_map(
-                                        static fn(PersistableValueObject $valueObject) => $valueObject->rawValue(),
-                                        $valueObjects
-                                    )
-                                )
+                                        static fn(
+                                            PersistableValueObject $valueObject,
+                                        ): mixed => $valueObject->rawValue(),
+                                        $valueObjects,
+                                    ),
+                                ),
                             ),
-                            JSON_THROW_ON_ERROR
-                        )
-                    )
-                )
-            )->toString()
+                            JSON_THROW_ON_ERROR,
+                        ),
+                    ),
+                ),
+            )->toString(),
         );
     }
 }
