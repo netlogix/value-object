@@ -38,27 +38,27 @@ abstract readonly class IntegerValue implements PersistableValueObject, Stringab
         return $this->value === $other->value;
     }
 
-    public function add(IntegerValue $value): static
+    public function add(self $value): static
     {
         return new static($this->value + $value->toInteger());
     }
 
-    public function sub(IntegerValue $value): static
+    public function sub(self $value): static
     {
         return new static($this->value - $value->toInteger());
     }
 
-    public function multiply(IntegerValue $value): static
+    public function multiply(self $value): static
     {
         return new static($this->value * $value->toInteger());
     }
 
-    public function greater(IntegerValue $value): bool
+    public function greater(self $value): bool
     {
         return $this->value > $value->toInteger();
     }
 
-    public function less(IntegerValue $value): bool
+    public function less(self $value): bool
     {
         return $this->value < $value->toInteger();
     }

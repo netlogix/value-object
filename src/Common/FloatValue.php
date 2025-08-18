@@ -31,6 +31,51 @@ abstract readonly class FloatValue implements PersistableValueObject, Stringable
         return $this->value === $other->value;
     }
 
+    public function add(self $value): static
+    {
+        return new static($this->value + $value->toFloat());
+    }
+
+    public function sub(self $value): static
+    {
+        return new static($this->value - $value->toFloat());
+    }
+
+    public function multiply(self $value): static
+    {
+        return new static($this->value * $value->toFloat());
+    }
+
+    public function greater(self $value): bool
+    {
+        return $this->value > $value->toFloat();
+    }
+
+    public function less(self $value): bool
+    {
+        return $this->value < $value->toFloat();
+    }
+
+    public function negate(): static
+    {
+        return new static($this->value * -1);
+    }
+
+    public function isZero(): bool
+    {
+        return $this->value === 0.0;
+    }
+
+    public function isPositive(): bool
+    {
+        return $this->value > 0;
+    }
+
+    public function isNegative(): bool
+    {
+        return $this->value < 0;
+    }
+
     #[\Override]
     public function __toString(): string
     {

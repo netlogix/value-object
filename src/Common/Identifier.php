@@ -77,7 +77,8 @@ abstract readonly class Identifier implements PersistableValueObject, Stringable
         return new static(
             Uuid::fromBinary(
                 hex2bin(
-                    md5(
+                    hash(
+                        'xxh128',
                         json_encode(
                             strtolower(
                                 implode(
