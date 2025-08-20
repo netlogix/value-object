@@ -11,7 +11,7 @@ use Doctrine\DBAL\ParameterType;
 use Netlogix\ValueObject\Service\NowFactory;
 use Stringable;
 
-abstract readonly class DateTime implements PersistableValueObject, Stringable
+abstract readonly class DateTime implements EqualableValueObject, PersistableValueObject, Stringable
 {
     final public const string DEFAULT_DATE_TIME_FORMAT = 'Y-m-d\TH:i:s\Z';
 
