@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace Netlogix\ValueObject\Common;
@@ -14,7 +13,4 @@ use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
  *
  * @method bool equals(static $other)
  */
-interface EqualableValueObject extends ValueObject
-{
-
-}
+interface EqualableValueObject extends ValueObject {}
