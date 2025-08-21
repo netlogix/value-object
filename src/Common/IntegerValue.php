@@ -7,7 +7,7 @@ namespace Netlogix\ValueObject\Common;
 use Doctrine\DBAL\ParameterType;
 use Stringable;
 
-abstract readonly class IntegerValue implements PersistableValueObject, Stringable
+abstract readonly class IntegerValue implements EqualableValueObject, PersistableValueObject, Stringable
 {
     public function __construct(protected int $value) {}
 

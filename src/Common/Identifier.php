@@ -8,7 +8,7 @@ use Doctrine\DBAL\ParameterType;
 use Stringable;
 use Symfony\Component\Uid\Uuid;
 
-abstract readonly class Identifier implements PersistableValueObject, Stringable
+abstract readonly class Identifier implements EqualableValueObject, PersistableValueObject, Stringable
 {
     public function __construct(protected string $identifier) {}
 

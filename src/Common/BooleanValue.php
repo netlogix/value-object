@@ -7,7 +7,7 @@ namespace Netlogix\ValueObject\Common;
 use Doctrine\DBAL\ParameterType;
 use Stringable;
 
-abstract readonly class BooleanValue implements PersistableValueObject, Stringable
+abstract readonly class BooleanValue implements EqualableValueObject, PersistableValueObject, Stringable
 {
     public function __construct(protected bool $value) {}
 
