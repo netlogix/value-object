@@ -21,10 +21,15 @@ class PersistableValueObjectPass implements CompilerPassInterface
     {
         $types = [];
 
-        foreach (
-            array_keys($container->findTaggedResourceIds(PersistableValueObjectPass::VALUE_OBJECT_TAG))
-            as $class
-        ) {
+        foreach ($container->getDefinitions() as $definition) {
+            if (
+                !$definition->hasTag(PersistableValueObjectPass::VALUE_OBJECT_TAG) ||
+                $definition->isAbstract() ||
+                ($class = $definition->getClass()) === null
+            ) {
+                continue;
+            }
+
             $types[$class] = $class;
         }
 
