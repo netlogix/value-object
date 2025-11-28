@@ -25,12 +25,15 @@ class PersistableValueObjectPass implements CompilerPassInterface
             if (!$definition->hasTag(PersistableValueObjectPass::VALUE_OBJECT_TAG)) {
                 continue;
             }
+
             if ($definition->isAbstract()) {
                 continue;
             }
+
             if (($class = $definition->getClass()) === null) {
                 continue;
             }
+
             $types[$class] = $class;
         }
 
