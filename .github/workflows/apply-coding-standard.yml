@@ -57,7 +57,7 @@ jobs:
         run: ./prettier.sh --write
 
       - name: 'Create pull-request'
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: '[automated] Apply Coding Standard'
           branch: 'automated-apply-coding-standards'
